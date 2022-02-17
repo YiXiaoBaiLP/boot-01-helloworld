@@ -1,5 +1,10 @@
 package com.yixiaobai.bean;
 
+/**
+ * 宠物
+ * @author yixiaobai
+ *
+ */
 public class Pet {
 
 	private String name;

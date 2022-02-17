@@ -1,5 +1,10 @@
 package com.yixiaobai.bean;
 
+/**
+ * 用户
+ * @author yixiaobai
+ *
+ */
 public class User {
 
 	private String name;

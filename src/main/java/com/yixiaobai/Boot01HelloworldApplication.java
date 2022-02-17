@@ -27,9 +27,9 @@ public class Boot01HelloworldApplication {
 		
 		// 从容器中的获取组件
 		// 容器中获取的Bean组件默认为单实例的
-		Pet pet = (Pet) run.getBean("tomcat");
-		Pet pet01 = run.getBean("tomcat", Pet.class);
-		System.out.println("组件：" + (pet == pet01));
+		Pet pet01 = (Pet) run.getBean("tomcat");
+		Pet pet02 = run.getBean("tomcat", Pet.class);
+		System.out.println("组件是否为单实例：" + (pet01 == pet02));
 		
 		// 容器中获取配置类
 		MyConfig myConfigBean = run.getBean(MyConfig.class);
@@ -44,9 +44,9 @@ public class Boot01HelloworldApplication {
 		
 		// 当@Configuration(proxyBeanMethods = true)时userBean对象中的pet对象与MyConfig类中pet01()方法为一个对象
 		// 当@Configuration(proxyBeanMethods = false)时userBean对象中的pet对象与MyConfig类中pet01()方法不为一个对象
-		Pet pet02 = myConfigBean.pet01();
+		Pet pet03 = myConfigBean.pet01();
 		Pet userBeanPet = userBean.getPet();
-		System.out.println("userBean中的pet对象与Pet方法中的是同一个吗？" + (pet02 == userBeanPet));
+		System.out.println("userBean中的pet对象与Pet方法中的是同一个吗？" + (pet03 == userBeanPet));
 		
 	}
 

@@ -15,17 +15,23 @@ import com.yixiaobai.bean.User;
  * 		组件依赖
  * @author yixiaobai
  */
-@Configuration(proxyBeanMethods = true) // 这是一个配置类 == 配置文件 bean.xml
+@Configuration(proxyBeanMethods = true) // 这是一个配置类 == 配置文件 beans.xml
 public class MyConfig {
 	
 	@Bean // 给容器中添加组件，已方法名作为组件的ID;返回类型就是组件类型。返回的值，就是组件在容器中的实例
 	public User user01() {
 		User user = new User("ZhangSan", 18);
+		// User组件依赖了Pet组件
 		user.setPet(pet01());
 		return user;
 	}
 	
-	@Bean("tomcat")
+	@Bean
+	public Pet tomcatPet() {
+		return new Pet("tomcatPet");
+	}
+	
+	@Bean("tomcat")// 默认 的组件名称为方法名称，也可以使用此方法来 自定义名称。
 	public Pet pet01() {
 		return new Pet("tomcat");
 	}
